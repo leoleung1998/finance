@@ -27,5 +27,5 @@ for i in [365,90,30]:
     top_tokens=list(token_sr.keys())[:10]
     sharpe_ratio[top_tokens][-180:].plot()
     print(f"{i} Days \n Rolling Sharpe Ratio" ,list(token_sr.items())[:10])
-    plt.title(f'{i} Days rolling SR for top 10 tokens')
+    plt.plot(f'{i} Days rolling SR for top 10 tokens.jpg')
 plt.show()
