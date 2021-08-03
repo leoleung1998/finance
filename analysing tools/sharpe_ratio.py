@@ -4,12 +4,14 @@ import requests
 import matplotlib.pyplot as plt
 from bs4 import BeautifulSoup
 period=365
+## getting the market data of cryptocurrencies on yahoo finance
 response=requests.get("https://finance.yahoo.com/cryptocurrencies")
 soup=BeautifulSoup(response.text,features='lxml')
 results=soup.find_all('a',{"data-test":"quoteLink"})
 tickers=[]
 for i in results:
     tickers.append(i.text)
+## set period to max to get all available data of BTC
 df_all=yf.Ticker('BTC-USD').history(period='max').reset_index()[['Date','Open']]
 df_all=df_all.rename(columns={'Open':'BTC-USD'})
 for i in range(1,len(tickers)):
